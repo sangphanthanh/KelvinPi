@@ -7,8 +7,7 @@ var express = require('express'),
   io = require('socket.io').listen(server),
   config = require('./config/config'),
   mongoose =require('mongoose');
-//Configure Sever 
-server.listen(config.port);
+
 
 //Configure GPIO PIN
 Gpio = require('onoff').Gpio;
@@ -30,6 +29,10 @@ mongoose.connection.on('error',(err)=>{
 	console.log('database error ' + err)
 });
 
+//Configure Sever 
+server.listen(config.port,()=>{
+  console.log('Server starting at port '+ config.port);
+});
 
 //Configure module
 app.use(express.static(__dirname + '/public'));

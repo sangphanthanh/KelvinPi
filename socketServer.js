@@ -23,13 +23,12 @@ mongoose.set('useFindAndModify', false);
 mongoose.connection.on('connected',()=>{
 	console.log('connected to database ' + config.database)
 });
-
 //On error
 mongoose.connection.on('error',(err)=>{
 	console.log('database error ' + err)
 });
 
-//Configure Sever 
+//Configure Server 
 server.listen(config.port,()=>{
   console.log('Server starting at port '+ config.port);
 });
@@ -42,7 +41,6 @@ app.get('/', function (req, res) {
 
 //Open connection socket
 io.sockets.on('connection', function (socket) { // WebSocket Connection
-
   //Param
   var p1Value = 0; //static variable for current status
   var p2Value = 0; //static variable for current status
@@ -55,7 +53,6 @@ io.sockets.on('connection', function (socket) { // WebSocket Connection
       //   console.log(lightvalue); //turn LED on or off, for now we will just show it in console.log
     }
   });
-
 
   socket.on('pump2', function (data) { //get light switch status from client
     p2Value = data;

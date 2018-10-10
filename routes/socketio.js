@@ -1,4 +1,4 @@
-exports.foo = function(req,res){
+module.exports.foo = function(req,res){
     // now use socket.io in your routes file
     var io = req.app.get('socketio');
 

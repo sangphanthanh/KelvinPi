@@ -3,8 +3,10 @@ var express = require('express'),
 app = express(),
 server = require('http').createServer(app),
 io = require('socket.io').listen(server),
-users = {};
-server.listen(8888);
+config = require('./config/config');
+
+
+server.listen(config.port);
 Gpio = require('onoff').Gpio;
 ac1 = new Gpio(4,'out');
 ac2 = new Gpio(17,'out');

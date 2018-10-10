@@ -7,7 +7,7 @@ var express = require('express'),
   io = require('socket.io').listen(server),
   config = require('./config/config'),
   mongoose =require('mongoose');
-  app.set('socketio', io);
+  
 
 //Connect to database
 mongoose.connect(config.database, {useMongoClient: true});
@@ -32,6 +32,8 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/public/index.html');
 });
+
+app.set('socketio', io);
 
 process.on('SIGINT', function () {
   ac1.writeSync(0);

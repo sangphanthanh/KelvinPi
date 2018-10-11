@@ -41,7 +41,7 @@ module.exports.updateDeviceStatus = function (name, status, callback) {
         name: name
     }
     console.log('updated Device ' + name + ' : '+ status);
-    Device.findOneAndUpdate(query, {
+    Device.findOneAndUpdate({name:name}, {
         $set: {
             status: status
         }

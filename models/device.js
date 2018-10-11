@@ -35,13 +35,19 @@ module.exports.updateDevice = function (device, callback) {
     }, callback);
 }
 
+
 module.exports.updateDeviceStatus = function (name, status, callback) {
     var query = {
         name: name
     }
+    console.log('updated Device');
     Device.findOneAndUpdate(query, {
         $set: {
             status: status
         }
     }, this.callback);
+}
+
+module.exports.addDevice = function(newDevice, callback){
+    newDevice.save(callback);
 }

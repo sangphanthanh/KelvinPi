@@ -42,7 +42,6 @@ app.get('/', function (req, res) {
 // app.set('socketio', io);
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-const devices = require('./routes/devices');
 app.use('/devices',devices);
 
 //Open connection socket

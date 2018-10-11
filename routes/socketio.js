@@ -1,13 +1,14 @@
-module.exports.foo = function(req,res){
+//Configure GPIO PIN
+const Gpio = require('onoff').Gpio;
+var ac1 = new Gpio(4, 'out');
+var ac2 = new Gpio(17, 'out');
+var ac3 = new Gpio(27, 'out');
+
+module.exports = function(req,res){
     // now use socket.io in your routes file
     var io = req.app.get('socketio');
 
-    //Configure GPIO PIN
-    const Gpio = require('onoff').Gpio;
-    ac1 = new Gpio(4, 'out');
-    ac2 = new Gpio(17, 'out');
-    ac3 = new Gpio(27, 'out');
-
+    
     //Open connection socket
     io.sockets.on('connection', function (socket) { // WebSocket Connection
         //Param

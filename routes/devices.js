@@ -1,4 +1,4 @@
-const device = require('../models/device');
+const Device = require('../models/device');
 
 
 module.exports.pumpStatus = function(name,value){

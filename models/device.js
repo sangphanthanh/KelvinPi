@@ -45,7 +45,7 @@ module.exports.updateDeviceStatus = function (name, status, callback) {
         $set: {
             status: status
         }
-    }, this.callback);
+    },callback);
 }
 
 module.exports.addDevice = function(newDevice, callback){

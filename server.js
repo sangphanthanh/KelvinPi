@@ -40,9 +40,6 @@ app.get('/', function (req, res) {
 });
 
 // app.set('socketio', io);
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use('/devices',devices);
 
 //Open connection socket
 io.sockets.on('connection', function (socket) { // WebSocket Connection
@@ -55,6 +52,7 @@ io.sockets.on('connection', function (socket) { // WebSocket Connection
     console.log('PUMP1: ' + p1Value);
     if (p1Value != ac1.readSync()) {
       ac1.writeSync(p1Value);
+      devices.addDevice();
       devices.pumpStatus('pump1',p1Value);
       //   console.log(lightvalue); //turn LED on or off, for now we will just show it in console.log
     }

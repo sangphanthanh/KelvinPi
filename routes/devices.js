@@ -1,7 +1,5 @@
 const device = require('../models/device');
 
-const express = require('express');
-const router = express.Router();
 
 module.exports.pumpStatus = function(name,value){
     if(value == 1){
@@ -13,15 +11,13 @@ module.exports.pumpStatus = function(name,value){
     }
 }
 
-router.post('/addDevice', (req, res, next) => {
+module.exports.addDevice = function(){
     let newDevice = new Device({
-        name: req.body.name,
-        isActive: req.body.isActive,
-        status: req.body.status
+        name: 'pump1',
+        isActive: true,
+        status: true
     })
     Device.addDevice(newDevice, (err, device) => {
         if (err) throw err
     })
-})
-
-module.exports = router;
+}

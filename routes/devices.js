@@ -1,4 +1,11 @@
-const express = require('express');
-const router = express.Router();
+const device = require('../models/device');
 
-module.exports = router;
+
+
+module.exports.pumpStatus = function(name,value){
+    if(value == 1){
+        device.updateDeviceStatus(name,true);
+    }else{
+        device.updateDeviceStatus(name,false);
+    }
+}

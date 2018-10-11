@@ -8,7 +8,7 @@ var express = require('express'),
   config = require('./config/config'),
   mongoose = require('mongoose');
 
-const device = require('./models/device');
+const devices = require('./routes/devices');
 const Gpio = require('onoff').Gpio;
 var ac1 = new Gpio(4, 'out');
 var ac2 = new Gpio(17, 'out');
@@ -53,7 +53,7 @@ io.sockets.on('connection', function (socket) { // WebSocket Connection
     console.log('PUMP1: ' + p1Value);
     if (p1Value != ac1.readSync()) {
       ac1.writeSync(p1Value);
-      device.updateDeviceStatus('pump1',p1Value);
+      devices.pumpStatus('pump1',p1Value);
       //   console.log(lightvalue); //turn LED on or off, for now we will just show it in console.log
     }
   });
@@ -63,7 +63,7 @@ io.sockets.on('connection', function (socket) { // WebSocket Connection
     console.log('PUMP2: ' + p2Value);
     if (p2Value != ac2.readSync()) {
       ac2.writeSync(p2Value);
-      device.updateDeviceStatus('pump2',p2Value);
+      devices.pumpStatus('pump2',p2Value);
       //   console.log(lightvalue); //turn LED on or off, for now we will just show it in console.log
     }
   });

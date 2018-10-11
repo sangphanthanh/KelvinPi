@@ -4,10 +4,20 @@ const Device = require('../models/device');
 module.exports.pumpStatus = function(name,value){
     if(value == 1){
         console.log('value:1 ' + name);
-        Device.updateDeviceStatus(name,true);
+        Device.updateDeviceStatus(name,true, (err, device)=>{
+            if(err) throw err;
+            if(device){
+                console.log('Device: '+device.name+ ' status: '+device.status);
+            }
+        });
     }else{
         console.log('value:0 ' + name);
-        Device.updateDeviceStatus(name,false);
+        Device.updateDeviceStatus(name,false, (err,device)=>{
+            if(err) throw err;
+            if(device){
+                console.log('Device: '+device.name+ ' status: '+device.status);
+            }
+        });
     }
 }
 

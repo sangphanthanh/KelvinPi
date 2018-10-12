@@ -69,10 +69,10 @@ io.sockets.on('connection', function (socket) { // WebSocket Connection
 });
 
 process.on('SIGINT', function () {
-  ac1.writeSync(0);
+  ac1.writeSync(1);
   ac1.unexport();
 
-  ac2.writeSync(0);
+  ac2.writeSync(1);
   ac2.unexport();
 
   process.exit();

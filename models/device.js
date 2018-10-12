@@ -36,12 +36,12 @@ module.exports.updateDevice = function (device, callback) {
 }
 
 
-module.exports.updateDeviceStatus = function (name, status, callback) {
-    const query = {name: name}
+module.exports.updateDeviceStatus = function (vname, vstatus, callback) {
+    const query = {name: vname}
     console.log('updated Device ' + name + ' : ' + status);
     Device.findOneAndUpdate(query, {
         $set:{
-            status: status
+            status: vstatus
         }}, callback);
 }
 

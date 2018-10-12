@@ -37,15 +37,22 @@ module.exports.updateDevice = function (device, callback) {
 
 
 module.exports.updateDeviceStatus = function (vname, vstatus, callback) {
-    const query = {name: vname}
+    const query = {
+        name: vname
+    }
     console.log('updated Device ' + vname + ' : ' + vstatus);
-    Device.findOneAndUpdate({name:'pump1'}, {
-        $set:{
-            status: vstatus
-        }}, callback);
+    if (typeof(vstatus) == 'boolean') {
+        console.log('boolean type')
+        Device.findOneAndUpdate({
+            name: 'pump1'
+        }, {
+            $set: {
+                status: vstatus
+            }
+        }, callback);
+    }
 }
 
 module.exports.addDevice = function (newDevice, callback) {
     newDevice.save(callback);
 }
-
